@@ -14,8 +14,6 @@ Cada pasta neste repositório representa um projeto independente, focado em um m
 
 - **📁 spring-web**: Projeto que cobre o **Spring Web**. Desenvolvi APIs RESTful, explorei o uso de DTOs, validação de dados e tratamento de exceções.
 
-- **📁 spring-batch**: Projeto para estudar o **Spring Batch**. Implementei processamento em lote, leitura de arquivos CSV e agendamento de tarefas.
-
 - **📁 spring-cloud**: Projeto que explora o **Spring Cloud**. Aprendi sobre service discovery, load balancing e configuração centralizada com Spring Cloud Config.
 
 - **📁 spring-test**: Projeto dedicado ao **Spring Testing**. Aqui, pratiquei testes unitários, de integração e mockagem com Mockito e JUnit.
