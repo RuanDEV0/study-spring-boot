@@ -26,10 +26,9 @@ Cada pasta neste repositório representa um projeto independente, focado em um m
 - **Spring Data JPA**
 - **Spring Security**
 - **Spring Web**
-- **Spring Batch**
 - **Spring Cloud**
-- **H2 Database** / **MySQL** / **PostgreSQL** (dependendo do projeto)
-- **Maven** / **Gradle**
+- **PostgreSQL**
+- **Maven**
 - **JUnit** e **Mockito** para testes
 - **Swagger** para documentação de APIs (em alguns projetos)
 
