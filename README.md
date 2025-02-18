@@ -8,6 +8,8 @@
 
 Cada pasta neste repositório representa um projeto independente, focado em um módulo ou funcionalidade específica do Spring Boot. Aqui está uma visão geral do que você encontrará:
 
+- **📁 arquitetura-spring**: Projeto dedicado ao **MVC**. Aqui, pratiquei como utilizar camada MVC, injeção de dependência, components, configurations e beans.
+  
 - **📁 spring-jpa**: Projeto dedicado ao estudo do **Spring Data JPA**. Aqui, explorei como mapear entidades, criar repositórios e realizar consultas complexas com JPQL e Query Methods.
   
 - **📁 spring-security**: Projeto focado no **Spring Security**. Aprendi a configurar autenticação, autorização, OAuth2 e JWT para proteger APIs RESTful.
@@ -22,7 +24,7 @@ Cada pasta neste repositório representa um projeto independente, focado em um m
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **Spring Boot** (versão X.X.X)
+- **Spring Boot** (versão 3.4.2)
 - **Spring Data JPA**
 - **Spring Security**
 - **Spring Web**
