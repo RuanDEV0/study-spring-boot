@@ -26,7 +26,7 @@ public class DatasourceConfiguration {
      * @return
      */
 
-   @Bean
+   //@Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
 

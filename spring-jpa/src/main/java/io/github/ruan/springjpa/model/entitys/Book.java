@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -16,15 +17,18 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    @Column(nullable = false)
+    @Column(length = 100, nullable = false)
     private String title;
-    @Column(nullable = false)
+    @Column(length = 20, nullable = false)
     private String isBn;
     @Column(nullable = false)
     private LocalDate date_publication;
-    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 30)
     private Gender gender;
-    private Double value;
-    @Column(nullable = false)
-    private UUID authorId;
+    @Column(nullable = false, precision = 18, scale = 2)
+    private BigDecimal value;
+    @ManyToOne
+    @JoinColumn
+    private Author authorId;
 }
