@@ -20,6 +20,7 @@ public class Author {
     private String nationality;
     @Column(nullable = false)
     private LocalDate date_birth;
-    @OneToMany(mappedBy = "authorId")
+    //@OneToMany(mappedBy = "authorId")
+    @Transient
     private Set<Book> listBook;
 }
