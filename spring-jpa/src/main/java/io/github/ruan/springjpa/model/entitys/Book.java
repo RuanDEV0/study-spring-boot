@@ -2,6 +2,7 @@ package io.github.ruan.springjpa.model.entitys;
 
 import io.github.ruan.springjpa.model.enums.Gender;
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,8 +12,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "tb_book")
-@Getter
-@Setter
+@Data
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -28,7 +28,7 @@ public class Book {
     private Gender gender;
     @Column(nullable = false, precision = 18, scale = 2)
     private BigDecimal value;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn
     private Author authorId;
 }
