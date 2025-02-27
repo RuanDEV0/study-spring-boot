@@ -59,8 +59,8 @@ class AuthorRepositoryTest {
 
     @Test
     @DisplayName("delete by id author in data base")
-    void deleteById_RemoveAuthorInDataBase_WhenSucessuful(){
-        authorRepository.deleteById(UUID.fromString("ee7cf962-7342-4fb8-acc0-3759944fcd80"));
+    void deleteById_RemoveByIdAuthorInDataBase_WhenSucessuful(){
+        authorRepository.deleteById(UUID.fromString("cb1077bf-8cd1-4f30-8532-f19366790e05"));
     }
 
     @Test

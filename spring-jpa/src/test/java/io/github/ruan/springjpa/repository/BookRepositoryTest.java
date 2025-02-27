@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @SpringBootTest
 @DisplayName("tests in class author repository")
@@ -62,5 +63,26 @@ class BookRepositoryTest {
 
         Book savedBook = bookRepository.save(book);
         System.out.println(savedBook);
+    }
+
+    @DisplayName("test replace author of book")
+    @Test
+    void replace_PersistAuthorOfBook_WhenSucessuful(){
+        Book book = bookRepository.findById(UUID.fromString("37dde338-3321-4912-b9ce-b16e79b574cc"))
+                .orElse(null);
+
+        Author author = authorRepository.findById(UUID.fromString("58e295ec-cc0b-4570-b32c-abb734b0fc3c"))
+                .orElse(null);
+
+
+        book.setAuthorId(author);
+        bookRepository.save(book);
+    }
+
+    @Test
+    @DisplayName("test delete book in data base for with cascade or not")
+    void deleteById_RemoveInDataBase_WhenSucessuful(){
+        bookRepository.deleteById(UUID.fromString("37dde338-3321-4912-b9ce-b16e79b574cc"));
+        System.out.println(bookRepository.findAll());
     }
 }
