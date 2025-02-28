@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -29,8 +30,8 @@ public class Book {
     @Column(nullable = false, precision = 18, scale = 2)
     private BigDecimal value;
     @ManyToOne(
-            cascade = CascadeType.ALL
+            //cascade = CascadeType.ALL
     )
-    @JoinColumn
-    private Author authorId;
+    @JoinColumn(name = "id_author")
+    private Author author;
 }

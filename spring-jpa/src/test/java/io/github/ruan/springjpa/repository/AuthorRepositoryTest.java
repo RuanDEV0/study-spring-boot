@@ -77,7 +77,7 @@ class AuthorRepositoryTest {
     }
 
     @Test
-    @DisplayName("test save author and relacionship not cascade")
+    @DisplayName("test save author and relacionship without cascade")
     void save_PersistAuthorWithRelacionship_WhenSucessul() {
         Author author = new Author();
         author.setName("Hunter");
@@ -90,7 +90,7 @@ class AuthorRepositoryTest {
         book.setIsBn("234343-adadad-232323");
         book.setValue(BigDecimal.valueOf(245.89));
         book.setDate_publication(LocalDate.of(2003, 2, 3));
-        book.setAuthorId(author);
+        book.setAuthor(author);
 
         Book book2 = new Book();
         book2.setGender(Gender.ROMANCE);
@@ -98,7 +98,7 @@ class AuthorRepositoryTest {
         book2.setIsBn("ererere-34343-124");
         book2.setValue(BigDecimal.valueOf(12.89));
         book2.setDate_publication(LocalDate.of(2013, 9, 12));
-        book2.setAuthorId(author);
+        book2.setAuthor(author);
 
 
         ArrayList<Book> list = new ArrayList<>(List.of(book, book2));
@@ -122,7 +122,7 @@ class AuthorRepositoryTest {
         book.setIsBn("332444-----0000000");
         book.setValue(BigDecimal.valueOf(156.99));
         book.setDate_publication(LocalDate.of(2010, 12, 30));
-        book.setAuthorId(author);
+        book.setAuthor(author);
 
         Book book2 = new Book();
         book2.setGender(Gender.FICCAO);
@@ -130,9 +130,17 @@ class AuthorRepositoryTest {
         book2.setIsBn("8400-3421");
         book2.setValue(BigDecimal.valueOf(1245.19));
         book2.setDate_publication(LocalDate.of(2020, 10, 22));
-        book2.setAuthorId(author);
+        book2.setAuthor(author);
 
         author.getListBook().addAll(List.of(book, book2));
         authorRepository.save(author);
+    }
+
+    @Test
+    @DisplayName("test find boooks by author usaged query method")
+    void findBookByAuthor_ReturnListWithBook_WhenSucessuful(){
+        Author author = authorRepository.findAll().get(1);
+        System.out.println(author);
+        bookRepository.findByAuthor(author).forEach(System.out::println);
     }
 }

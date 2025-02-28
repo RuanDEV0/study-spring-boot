@@ -38,7 +38,7 @@ class BookRepositoryTest {
         author.setDate_birth(LocalDate.of(1978, 5, 23));
         Author saved = authorRepository.save(author);
 
-        book.setAuthorId(author);
+        book.setAuthor(author);
 
         Book savedBook = bookRepository.save(book);
         System.out.println(savedBook);
@@ -59,7 +59,7 @@ class BookRepositoryTest {
         author.setName("Michael Jordan");
         author.setDate_birth(LocalDate.of(1970, 1, 14));
 
-        book.setAuthorId(author);
+        book.setAuthor(author);
 
         Book savedBook = bookRepository.save(book);
         System.out.println(savedBook);
@@ -75,7 +75,7 @@ class BookRepositoryTest {
                 .orElse(null);
 
 
-        book.setAuthorId(author);
+        book.setAuthor(author);
         bookRepository.save(book);
     }
 
