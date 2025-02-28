@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -20,7 +20,6 @@ public class Author {
     private String nationality;
     @Column(nullable = false)
     private LocalDate date_birth;
-    //@OneToMany(mappedBy = "authorId")
-    @Transient
-    private Set<Book> listBook;
+    @OneToMany(mappedBy = "authorId", cascade = CascadeType.ALL)
+    private List<Book> listBook;
 }
