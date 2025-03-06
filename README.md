@@ -6,7 +6,7 @@
 
 ## 📂 Estrutura do Repositório
 
-Cada pasta neste repositório representa um projeto independente, focado em um módulo ou funcionalidade específica do Spring Boot. Aqui está uma visão geral do que você encontrará:
+Cada pasta neste repositório é focada em um módulo do Spring Boot. Aqui está uma visão geral do que você encontrará:
 
 - **📁 arquitetura-spring**: Projeto dedicado ao **MVC**. Aqui, pratiquei como utilizar camada MVC, injeção de dependência, components, configurations e beans.
   
