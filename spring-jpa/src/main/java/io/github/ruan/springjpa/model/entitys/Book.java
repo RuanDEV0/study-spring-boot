@@ -3,9 +3,6 @@ package io.github.ruan.springjpa.model.entitys;
 import io.github.ruan.springjpa.model.enums.Gender;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -23,7 +20,7 @@ public class Book {
     @Column(length = 20, nullable = false)
     private String isBn;
     @Column(nullable = false)
-    private LocalDate date_publication;
+    private LocalDate datePublication;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 30)
     private Gender gender;

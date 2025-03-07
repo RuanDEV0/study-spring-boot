@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @SpringBootTest
@@ -29,7 +30,7 @@ class BookRepositoryTest {
         book.setTitle("A bela e a fera");
         book.setValue(new BigDecimal("180.89"));
         book.setIsBn("True");
-        book.setDate_publication(LocalDate.of(2019, 9, 23));
+        book.setDatePublication(LocalDate.of(2019, 9, 23));
 
 
         Author author = new Author();
@@ -43,6 +44,7 @@ class BookRepositoryTest {
         Book savedBook = bookRepository.save(book);
         System.out.println(savedBook);
     }
+
     @Test
     @DisplayName("test save author return he saved!")
     void save_PersistAuthor_WithCascade() {
@@ -51,7 +53,7 @@ class BookRepositoryTest {
         book.setTitle("Velozes e Furiosos");
         book.setValue(new BigDecimal("280.89"));
         book.setIsBn("232442-2232");
-        book.setDate_publication(LocalDate.of(2015, 2, 21));
+        book.setDatePublication(LocalDate.of(2015, 2, 21));
 
 
         Author author = new Author();
@@ -67,7 +69,7 @@ class BookRepositoryTest {
 
     @DisplayName("test replace author of book")
     @Test
-    void replace_PersistAuthorOfBook_WhenSucessuful(){
+    void replace_PersistAuthorOfBook_WhenSucessuful() {
         Book book = bookRepository.findById(UUID.fromString("37dde338-3321-4912-b9ce-b16e79b574cc"))
                 .orElse(null);
 
@@ -81,8 +83,36 @@ class BookRepositoryTest {
 
     @Test
     @DisplayName("test delete book in data base for with cascade or not")
-    void deleteById_RemoveInDataBase_WhenSucessuful(){
+    void deleteById_RemoveInDataBase_WhenSucessuful() {
         bookRepository.deleteById(UUID.fromString("37dde338-3321-4912-b9ce-b16e79b574cc"));
         System.out.println(bookRepository.findAll());
+    }
+
+    @Test
+    @DisplayName("return book by title")
+    void findByTitle() {
+        Book book = bookRepository.findByTitle("Romance 2");
+        System.out.println(book);
+    }
+
+    @Test
+    @DisplayName("return book by isBn")
+    void findByIsbn() {
+        Book book = bookRepository.findByIsBn("ererere-34343-124");
+        System.out.println(book);
+    }
+
+    @Test
+    @DisplayName("return book by title and value")
+    void findByTitleAndValue() {
+        Book bookByTitleAndValue = bookRepository.findByTitleAndValue("007", BigDecimal.valueOf(245.89));
+        System.out.println(bookByTitleAndValue);
+    }
+
+    @Test
+    @DisplayName("retur list of book by title or isBn")
+    void findByTitleOrIsbn() {
+        List<Book> bookList = bookRepository.findByTitleOrIsBn("RD2", "ererere-34343-124");
+        bookList.forEach(System.out::println);
     }
 }

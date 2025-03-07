@@ -89,7 +89,7 @@ class AuthorRepositoryTest {
         book.setTitle("007");
         book.setIsBn("234343-adadad-232323");
         book.setValue(BigDecimal.valueOf(245.89));
-        book.setDate_publication(LocalDate.of(2003, 2, 3));
+        book.setDatePublication(LocalDate.of(2003, 2, 3));
         book.setAuthor(author);
 
         Book book2 = new Book();
@@ -97,7 +97,7 @@ class AuthorRepositoryTest {
         book2.setTitle("Romance 2");
         book2.setIsBn("ererere-34343-124");
         book2.setValue(BigDecimal.valueOf(12.89));
-        book2.setDate_publication(LocalDate.of(2013, 9, 12));
+        book2.setDatePublication(LocalDate.of(2013, 9, 12));
         book2.setAuthor(author);
 
 
@@ -121,7 +121,7 @@ class AuthorRepositoryTest {
         book.setTitle("RD2");
         book.setIsBn("332444-----0000000");
         book.setValue(BigDecimal.valueOf(156.99));
-        book.setDate_publication(LocalDate.of(2010, 12, 30));
+        book.setDatePublication(LocalDate.of(2010, 12, 30));
         book.setAuthor(author);
 
         Book book2 = new Book();
@@ -129,7 +129,7 @@ class AuthorRepositoryTest {
         book2.setTitle("Game 2");
         book2.setIsBn("8400-3421");
         book2.setValue(BigDecimal.valueOf(1245.19));
-        book2.setDate_publication(LocalDate.of(2020, 10, 22));
+        book2.setDatePublication(LocalDate.of(2020, 10, 22));
         book2.setAuthor(author);
 
         author.getListBook().addAll(List.of(book, book2));
