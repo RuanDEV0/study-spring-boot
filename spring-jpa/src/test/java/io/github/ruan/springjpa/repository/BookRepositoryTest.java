@@ -115,4 +115,32 @@ class BookRepositoryTest {
         List<Book> bookList = bookRepository.findByTitleOrIsBn("RD2", "ererere-34343-124");
         bookList.forEach(System.out::println);
     }
+
+    @Test
+    @DisplayName("listed book order by title and value using jpql query")
+    void listedBookOrderByTitleAndValue() {
+        List<Book> books = bookRepository.listedBookOrderByTitleAndValue();
+        books.forEach(System.out::println);
+    }
+
+    @Test
+    @DisplayName("listed author by books using jpql query")
+    void listedAuthorOfBooks() {
+        List<Author> books = bookRepository.listedAuthorOfBook();
+        books.forEach(System.out::println);
+    }
+
+    @Test
+    @DisplayName("listed title unique of books using jpql query")
+    void listedTitleUniqueOfBooks() {
+        List<String> books = bookRepository.listedTitleUniqueOfBook();
+        books.forEach(System.out::println);
+    }
+
+    @Test
+    @DisplayName("listed gender of books where author is brazilian using jpql query")
+    void listedByGenderOfBookWhereAuthorIsBrazilian() {
+        List<String> books = bookRepository.listedByGenderOfBookWhereAuthorIsBrazilian();
+        books.forEach(System.out::println);
+    }
 }
