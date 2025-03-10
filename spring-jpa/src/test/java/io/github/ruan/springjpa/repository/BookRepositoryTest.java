@@ -157,4 +157,16 @@ class BookRepositoryTest {
         List<Book> books = bookRepository.findByGenderOrderByTitle(Gender.ACAO, "title");
         books.forEach(System.out::println);
     }
+
+    @Test
+    @DisplayName("delete book by gender")
+    void deleteByGenderTest(){
+        bookRepository.deleteByGender(Gender.ROMANCE);
+    }
+
+    @Test
+    @DisplayName("update date publication all books in data base")
+    void updateDateAllBooksTest(){
+        bookRepository.updateDatePublication(LocalDate.of(2000,1,1));
+    }
 }

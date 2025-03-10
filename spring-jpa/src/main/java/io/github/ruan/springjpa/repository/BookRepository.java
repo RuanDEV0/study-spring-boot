@@ -3,7 +3,9 @@ package io.github.ruan.springjpa.repository;
 import io.github.ruan.springjpa.model.entitys.Author;
 import io.github.ruan.springjpa.model.entitys.Book;
 import io.github.ruan.springjpa.model.enums.Gender;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -51,4 +53,14 @@ public interface BookRepository extends JpaRepository<Book, UUID> {
 
     @Query("select b from Book b where b.gender = ?1 order by ?2")
     List<Book> findByGenderOrderByTitle(Gender gender, String orderBy);
+
+    @Modifying
+    @Transactional
+    @Query("delete Book where gender = ?1")
+    void deleteByGender(Gender gender);
+
+    @Modifying
+    @Transactional
+    @Query("update  Book set datePublication = ?1")
+    void updateDatePublication(LocalDate date);
 }
