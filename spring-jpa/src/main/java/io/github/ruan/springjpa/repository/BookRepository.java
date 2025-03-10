@@ -5,12 +5,16 @@ import io.github.ruan.springjpa.model.entitys.Book;
 import io.github.ruan.springjpa.model.enums.Gender;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * @see BookRepositoryTest
+ */
 public interface BookRepository extends JpaRepository<Book, UUID> {
     List<Book> findByAuthor(Author author);
 
@@ -41,4 +45,10 @@ public interface BookRepository extends JpaRepository<Book, UUID> {
     """)
     List<String> listedByGenderOfBookWhereAuthorIsBrazilian();
 
+    @Query("select b from Book b where b.gender = :nomeParametro order by :orderBy")
+    List<Book> findByGenderOrderByValue(@Param("nomeParametro") Gender gender,
+                                        @Param("orderBy") String type);
+
+    @Query("select b from Book b where b.gender = ?1 order by ?2")
+    List<Book> findByGenderOrderByTitle(Gender gender, String orderBy);
 }

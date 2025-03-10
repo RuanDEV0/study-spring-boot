@@ -143,4 +143,18 @@ class BookRepositoryTest {
         List<String> books = bookRepository.listedByGenderOfBookWhereAuthorIsBrazilian();
         books.forEach(System.out::println);
     }
+
+    @Test
+    @DisplayName("listed books with named parameters")
+    void listedByGenderOrderByValue() {
+        List<Book> books = bookRepository.findByGenderOrderByValue(Gender.ACAO, "value");
+        books.forEach(System.out::println);
+    }
+
+    @Test
+    @DisplayName("listed books with positional parameters")
+    void listedByGenderOrderByTitle() {
+        List<Book> books = bookRepository.findByGenderOrderByTitle(Gender.ACAO, "title");
+        books.forEach(System.out::println);
+    }
 }
