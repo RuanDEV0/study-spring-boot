@@ -27,7 +27,7 @@ class AuthorRepositoryTest {
 
     @Test
     @DisplayName("test return author saved")
-    void save_PersistAuthor_WhenSucessuful() {
+    void save_PersistAuthor_WhenSucessufulTest() {
         Author author = new Author();
         author.setNationality("American");
         author.setName("Michael Phelps");
@@ -40,7 +40,7 @@ class AuthorRepositoryTest {
 
     @Test
     @DisplayName("test in update author in database")
-    void replace_UpdateAuthor_WhenSucessuful() {
+    void replace_UpdateAuthor_WhenSucessufulTest() {
         Optional<Author> authorOptional = authorRepository.findById(UUID.fromString("9228ee71-f152-40a7-b86e-d0ee4cab7a80"));
         if (authorOptional.isPresent()) {
             Author author = authorOptional.get();
@@ -52,33 +52,33 @@ class AuthorRepositoryTest {
 
     @Test
     @DisplayName("return list of author")
-    void listAll_ListOfAuthor_WhenSucessuful() {
+    void listAll_ListOfAuthor_WhenSucessufulTest() {
         List<Author> list = authorRepository.findAll();
         System.out.println(list);
     }
 
     @Test
     @DisplayName("return count of author by id")
-    void count_ById_WhenSucessuful() {
+    void count_ById_WhenSucessufulTest() {
         System.out.println(authorRepository.count());
     }
 
     @Test
     @DisplayName("delete by id author in data base")
-    void deleteById_RemoveByIdAuthorInDataBase_WhenSucessuful() {
+    void deleteById_RemoveByIdAuthorInDataBase_WhenSucessufulTest() {
         authorRepository.deleteById(UUID.fromString("cb1077bf-8cd1-4f30-8532-f19366790e05"));
     }
 
     @Test
     @DisplayName("delete author in data base by object")
-    void delete_ByAuthor_WhenSucessuful() {
+    void delete_ByAuthor_WhenSucessufulTest() {
         Optional<Author> author = authorRepository.findById(UUID.fromString("5913cfe8-34b9-48b2-bc9a-83e1ef67c834"));
         author.ifPresent(value -> authorRepository.delete(value));
     }
 
     @Test
     @DisplayName("test save author and relacionship without cascade")
-    void save_PersistAuthorWithRelacionship_WhenSucessul() {
+    void save_PersistAuthorWithRelacionship_WhenSucessulTest() {
         Author author = new Author();
         author.setName("Hunter");
         author.setNationality("Brazilian");
@@ -109,7 +109,7 @@ class AuthorRepositoryTest {
 
     @Test
     @DisplayName("test save author and relacionship with cascade")
-    void save_PersistAuthorWitchRelationship_WhenSucessuful() {
+    void save_PersistAuthorWitchRelationship_WhenSucessufulTest() {
         Author author = new Author();
         author.setName("Donate");
         author.setNationality("African");
@@ -138,7 +138,7 @@ class AuthorRepositoryTest {
 
     @Test
     @DisplayName("test find boooks by author usaged query method")
-    void findBookByAuthor_ReturnListWithBook_WhenSucessuful(){
+    void findBookByAuthor_ReturnListWithBook_WhenSucessufulTest(){
         Author author = authorRepository.findAll().get(1);
         System.out.println(author);
         bookRepository.findByAuthor(author).forEach(System.out::println);

@@ -24,7 +24,7 @@ class BookRepositoryTest {
 
     @Test
     @DisplayName("test save author return he saved!")
-    void save_PersistAuthor_NotCascade() {
+    void save_PersistAuthor_NotCascadeTest() {
         Book book = new Book();
         book.setGender(Gender.ROMANCE);
         book.setTitle("A bela e a fera");
@@ -47,7 +47,7 @@ class BookRepositoryTest {
 
     @Test
     @DisplayName("test save author return he saved!")
-    void save_PersistAuthor_WithCascade() {
+    void save_PersistAuthor_WithCascadeTest() {
         Book book = new Book();
         book.setGender(Gender.ACAO);
         book.setTitle("Velozes e Furiosos");
@@ -69,7 +69,7 @@ class BookRepositoryTest {
 
     @DisplayName("test replace author of book")
     @Test
-    void replace_PersistAuthorOfBook_WhenSucessuful() {
+    void replace_PersistAuthorOfBook_WhenSucessufulTest() {
         Book book = bookRepository.findById(UUID.fromString("37dde338-3321-4912-b9ce-b16e79b574cc"))
                 .orElse(null);
 
@@ -83,77 +83,77 @@ class BookRepositoryTest {
 
     @Test
     @DisplayName("test delete book in data base for with cascade or not")
-    void deleteById_RemoveInDataBase_WhenSucessuful() {
+    void deleteById_RemoveInDataBase_WhenSucessufulTest() {
         bookRepository.deleteById(UUID.fromString("37dde338-3321-4912-b9ce-b16e79b574cc"));
         System.out.println(bookRepository.findAll());
     }
 
     @Test
     @DisplayName("return book by title")
-    void findByTitle() {
+    void findByTitleTest() {
         Book book = bookRepository.findByTitle("Romance 2");
         System.out.println(book);
     }
 
     @Test
     @DisplayName("return book by isBn")
-    void findByIsbn() {
+    void findByIsbnTest() {
         Book book = bookRepository.findByIsBn("ererere-34343-124");
         System.out.println(book);
     }
 
     @Test
     @DisplayName("return book by title and value")
-    void findByTitleAndValue() {
+    void findByTitleAndValueTest() {
         Book bookByTitleAndValue = bookRepository.findByTitleAndValue("007", BigDecimal.valueOf(245.89));
         System.out.println(bookByTitleAndValue);
     }
 
     @Test
     @DisplayName("retur list of book by title or isBn")
-    void findByTitleOrIsbn() {
+    void findByTitleOrIsbnTest() {
         List<Book> bookList = bookRepository.findByTitleOrIsBn("RD2", "ererere-34343-124");
         bookList.forEach(System.out::println);
     }
 
     @Test
     @DisplayName("listed book order by title and value using jpql query")
-    void listedBookOrderByTitleAndValue() {
+    void listedBookOrderByTitleAndValueTest() {
         List<Book> books = bookRepository.listedBookOrderByTitleAndValue();
         books.forEach(System.out::println);
     }
 
     @Test
     @DisplayName("listed author by books using jpql query")
-    void listedAuthorOfBooks() {
+    void listedAuthorOfBooksTest() {
         List<Author> books = bookRepository.listedAuthorOfBook();
         books.forEach(System.out::println);
     }
 
     @Test
     @DisplayName("listed title unique of books using jpql query")
-    void listedTitleUniqueOfBooks() {
+    void listedTitleUniqueOfBooksTest() {
         List<String> books = bookRepository.listedTitleUniqueOfBook();
         books.forEach(System.out::println);
     }
 
     @Test
     @DisplayName("listed gender of books where author is brazilian using jpql query")
-    void listedByGenderOfBookWhereAuthorIsBrazilian() {
+    void listedByGenderOfBookWhereAuthorIsBrazilianTest() {
         List<String> books = bookRepository.listedByGenderOfBookWhereAuthorIsBrazilian();
         books.forEach(System.out::println);
     }
 
     @Test
     @DisplayName("listed books with named parameters")
-    void listedByGenderOrderByValue() {
+    void listedByGenderOrderByValueTest() {
         List<Book> books = bookRepository.findByGenderOrderByValue(Gender.ACAO, "value");
         books.forEach(System.out::println);
     }
 
     @Test
     @DisplayName("listed books with positional parameters")
-    void listedByGenderOrderByTitle() {
+    void listedByGenderOrderByTitleTest() {
         List<Book> books = bookRepository.findByGenderOrderByTitle(Gender.ACAO, "title");
         books.forEach(System.out::println);
     }
