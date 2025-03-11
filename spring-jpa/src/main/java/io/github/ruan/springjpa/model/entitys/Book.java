@@ -27,7 +27,7 @@ public class Book {
     @Column(nullable = false, precision = 18, scale = 2)
     private BigDecimal value;
     @ManyToOne(
-            //cascade = CascadeType.ALL
+            cascade = CascadeType.ALL
     )
     @JoinColumn(name = "id_author")
     private Author author;
