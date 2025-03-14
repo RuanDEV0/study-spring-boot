@@ -16,7 +16,7 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/authors")
+@RequestMapping("authors")
 public class AuthorController {
 
     private final AuthorService authorServive;
@@ -24,7 +24,7 @@ public class AuthorController {
 
     @PostMapping
     public ResponseEntity<Void> save(@RequestBody AuthorDTO authorDTO){
-        UUID uuid = authorServive.save(authorDTO.parseToAuthor());
+        UUID uuid = authorServive.save(authorDTO);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")

@@ -36,7 +36,7 @@ class BookRepositoryTest {
         Author author = new Author();
         author.setNationality("American");
         author.setName("Michael Phelps");
-        author.setDate_birth(LocalDate.of(1978, 5, 23));
+        author.setDateBirth(LocalDate.of(1978, 5, 23));
         Author saved = authorRepository.save(author);
 
         book.setAuthor(author);
@@ -59,7 +59,7 @@ class BookRepositoryTest {
         Author author = new Author();
         author.setNationality("EUA");
         author.setName("Michael Jordan");
-        author.setDate_birth(LocalDate.of(1970, 1, 14));
+        author.setDateBirth(LocalDate.of(1970, 1, 14));
 
         book.setAuthor(author);
 

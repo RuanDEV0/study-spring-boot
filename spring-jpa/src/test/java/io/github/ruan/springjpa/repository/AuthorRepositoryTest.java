@@ -31,7 +31,7 @@ class AuthorRepositoryTest {
         Author author = new Author();
         author.setNationality("American");
         author.setName("Michael Phelps");
-        author.setDate_birth(LocalDate.of(1978, 5, 23));
+        author.setDateBirth(LocalDate.of(1978, 5, 23));
 
         var authorSaved = authorRepository.save(author);
         authorId = authorSaved.getId();
@@ -82,7 +82,7 @@ class AuthorRepositoryTest {
         Author author = new Author();
         author.setName("Hunter");
         author.setNationality("Brazilian");
-        author.setDate_birth(LocalDate.of(2002, 7, 17));
+        author.setDateBirth(LocalDate.of(2002, 7, 17));
 
         Book book = new Book();
         book.setGender(Gender.ACAO);
@@ -113,7 +113,7 @@ class AuthorRepositoryTest {
         Author author = new Author();
         author.setName("Donate");
         author.setNationality("African");
-        author.setDate_birth(LocalDate.of(2005, 4, 24));
+        author.setDateBirth(LocalDate.of(2005, 4, 24));
         author.setListBook(new ArrayList<>());
 
         Book book = new Book();

@@ -31,7 +31,7 @@ public class TransactionalService {
         Author author = new Author();
         author.setNationality("EUA");
         author.setName("Michael Jordan");
-        author.setDate_birth(LocalDate.of(1973, 5, 20));
+        author.setDateBirth(LocalDate.of(1973, 5, 20));
 
         book.setAuthor(author);
 
@@ -52,7 +52,7 @@ public class TransactionalService {
         Author author = new Author();
         author.setNationality("EUA");
         author.setName("Michael Phelps");
-        author.setDate_birth(LocalDate.of(1973, 5, 20));
+        author.setDateBirth(LocalDate.of(1973, 5, 20));
 
         book.setAuthor(author);
 
