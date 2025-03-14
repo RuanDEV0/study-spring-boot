@@ -21,7 +21,7 @@ public class Author {
     @Column(nullable = false, length = 50)
     private String nationality;
     @Column(nullable = false)
-    private LocalDate date_birth;
+    private LocalDate dateBirth;
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Book> listBook;
 }
