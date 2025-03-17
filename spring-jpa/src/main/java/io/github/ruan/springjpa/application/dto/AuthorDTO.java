@@ -1,18 +1,17 @@
 package io.github.ruan.springjpa.application.dto;
 
 import io.github.ruan.springjpa.model.entitys.Author;
-import lombok.Getter;
 
 import java.time.LocalDate;
 
 public record AuthorDTO(String name,
                         LocalDate dateBirth,
-                        String nacionality) {
+                        String nationality) {
 
     public Author parseToAuthor(){
         Author author = new Author();
         author.setName(this.name);
-        author.setNationality(this.nacionality);
+        author.setNationality(this.nationality);
         author.setDateBirth(this.dateBirth);
         return author;
     }

@@ -26,7 +26,7 @@ public class AuthorService {
         Optional<Author> author = authorRepository.findById(UUID.fromString(id));
          if(author.isPresent()){
              Author saved = author.get();
-             new AuthorResponseDTO(saved.getId(), saved.getName(), saved.getDateBirth(),
+              return new AuthorResponseDTO(saved.getId(), saved.getName(), saved.getDateBirth(),
                      saved.getNationality());
          }
          return null;
@@ -36,19 +36,19 @@ public class AuthorService {
         authorRepository.deleteById(UUID.fromString(id));
     }
 
-    public List<AuthorResponseDTO> findAllOrFilter(String name, String nacionality){
+    public List<AuthorResponseDTO> findAllOrFilter(String name, String nationality){
 
-        if(name != null && nacionality != null){
+        if(name != null && nationality != null){
             return toAuthorResponseDTOList(authorRepository.
-                    findByNameAndNacionality(name, nacionality));
+                    findByNameAndNationality(name, nationality));
         }
 
         if(name != null){
             return toAuthorResponseDTOList(authorRepository.findByName(name));
         }
 
-        if(nacionality != null){
-            return toAuthorResponseDTOList(authorRepository.findByNacionality(nacionality));
+        if(nationality != null){
+            return toAuthorResponseDTOList(authorRepository.findByNationality(nationality));
         }
 
         return toAuthorResponseDTOList(authorRepository.findAll());

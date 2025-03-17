@@ -8,13 +8,13 @@ import java.util.UUID;
 public record AuthorResponseDTO (UUID id,
                                  String name,
                                  LocalDate dateBirth,
-                                 String nacionality){
+                                 String nationality){
 
     public Author parseToAuthor(){
         Author author = new Author();
         author.setId(id);
         author.setName(this.name);
-        author.setNationality(this.nacionality);
+        author.setNationality(this.nationality);
         author.setDateBirth(this.dateBirth);
         return author;
     }

@@ -8,6 +8,6 @@ import java.util.UUID;
 
 public interface AuthorRepository extends JpaRepository<Author, UUID> {
     List<Author> findByName(String name);
-    List<Author> findByNacionality(String nacionality);
-    List<Author> findByNameAndNacionality(String name, String nacionality);
+    List<Author> findByNationality(String nationality);
+    List<Author> findByNameAndNationality(String name, String nationality);
 }

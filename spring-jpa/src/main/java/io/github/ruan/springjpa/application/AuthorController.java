@@ -2,7 +2,6 @@ package io.github.ruan.springjpa.application;
 
 import io.github.ruan.springjpa.application.dto.AuthorDTO;
 import io.github.ruan.springjpa.application.dto.AuthorResponseDTO;
-import io.github.ruan.springjpa.model.entitys.Author;
 import io.github.ruan.springjpa.service.AuthorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -54,7 +53,7 @@ public class AuthorController {
 
     @GetMapping
     public ResponseEntity<List<AuthorResponseDTO>> findAllOrFilter(@RequestParam(value = "name", required = false) String name,
-                                                                   @RequestParam(value = "nacionality", required = false) String nacionality){
-        return ResponseEntity.ok(authorServive.findAllOrFilter(name, nacionality));
+                                                                   @RequestParam(value = "nationality", required = false) String nationality){
+        return ResponseEntity.ok(authorServive.findAllOrFilter(name, nationality));
     }
 }
