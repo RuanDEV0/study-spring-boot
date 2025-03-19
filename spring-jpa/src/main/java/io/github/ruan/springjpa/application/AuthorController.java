@@ -2,8 +2,11 @@ package io.github.ruan.springjpa.application;
 
 import io.github.ruan.springjpa.application.dto.AuthorDTO;
 import io.github.ruan.springjpa.application.dto.AuthorResponseDTO;
+import io.github.ruan.springjpa.application.dto.ResponseError;
+import io.github.ruan.springjpa.exception.RegisterDuplicateException;
 import io.github.ruan.springjpa.service.AuthorService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -21,15 +24,19 @@ public class AuthorController {
 
 
     @PostMapping
-    public ResponseEntity<Void> save(@RequestBody AuthorDTO authorDTO){
-        UUID uuid = authorServive.save(authorDTO);
+    public ResponseEntity<Object> save(@RequestBody AuthorDTO authorDTO){
+        try{
+            UUID uuid = authorServive.save(authorDTO);
+            URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                    .path("/{id}")
+                    .buildAndExpand(uuid)
+                    .toUri();
+            return ResponseEntity.created(uri).build();
+        }catch(RegisterDuplicateException e){
+            var error = ResponseError.conflict(e.getMessage());
+            return ResponseEntity.status(error.statusCode()).body(error);
+        }
 
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(uuid)
-                .toUri();
-
-        return ResponseEntity.created(uri).build();
     }
 
     @PutMapping("{id}")

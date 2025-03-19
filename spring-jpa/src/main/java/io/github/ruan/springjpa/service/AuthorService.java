@@ -2,8 +2,10 @@ package io.github.ruan.springjpa.service;
 
 import io.github.ruan.springjpa.application.dto.AuthorDTO;
 import io.github.ruan.springjpa.application.dto.AuthorResponseDTO;
+import io.github.ruan.springjpa.exception.RegisterDuplicateException;
 import io.github.ruan.springjpa.model.entitys.Author;
 import io.github.ruan.springjpa.repository.AuthorRepository;
+import io.github.ruan.springjpa.validation.AuthorValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,9 +19,12 @@ import java.util.stream.Collectors;
 public class AuthorService {
 
     private final AuthorRepository authorRepository;
+    private final AuthorValidator authorValidator;
 
     public UUID save(AuthorDTO author){
-        return authorRepository.save(author.parseToAuthor()).getId();
+        Author savedToAuthor = author.parseToAuthor();
+        authorValidator.validate(savedToAuthor);
+        return authorRepository.save(savedToAuthor).getId();
     }
 
     public AuthorResponseDTO findById(String id){
