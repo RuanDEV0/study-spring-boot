@@ -6,7 +6,6 @@ import io.github.ruan.springjpa.application.dto.ResponseError;
 import io.github.ruan.springjpa.exception.RegisterDuplicateException;
 import io.github.ruan.springjpa.service.AuthorService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -40,10 +39,15 @@ public class AuthorController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Void> replace(@PathVariable String id,
-                                        @RequestBody AuthorDTO authorDTO){
-        authorServive.replace(id, authorDTO);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<Object> replace(@PathVariable String id,
+                                               @RequestBody AuthorDTO authorDTO){
+        try{
+            authorServive.replace(id, authorDTO);
+            return ResponseEntity.noContent().build();
+        }catch(RegisterDuplicateException e){
+            var error = ResponseError.conflict(e.getMessage());
+            return ResponseEntity.status(error.statusCode()).body(error);
+        }
     }
 
     @GetMapping("{id}")
