@@ -7,6 +7,8 @@ import io.github.ruan.springjpa.repository.AuthorRepository;
 import io.github.ruan.springjpa.repository.BookRepository;
 import io.github.ruan.springjpa.validation.AuthorValidator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,20 +46,26 @@ public class AuthorService {
 
     public List<AuthorResponseDTO> findAllOrFilter(String name, String nationality){
 
-        if(name != null && nationality != null){
-            return toAuthorResponseDTOList(authorRepository.
-                    findByNameAndNationality(name, nationality));
-        }
+        Author author = new Author();
+        author.setName(name);
+        author.setNationality(nationality);
 
-        if(name != null){
-            return toAuthorResponseDTOList(authorRepository.findByName(name));
-        }
+        ExampleMatcher exampleMatcher = ExampleMatcher.matching()
+                .withIgnorePaths("id", "dateBirth", "createTime", "updateTime")
+                .withIgnoreNullValues()
+                .withIgnoreCase()
+                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
 
-        if(nationality != null){
-            return toAuthorResponseDTOList(authorRepository.findByNationality(nationality));
-        }
+        Example<Author> example = Example.of(author, exampleMatcher);
 
-        return toAuthorResponseDTOList(authorRepository.findAll());
+        List<Author> list = authorRepository.findAll(example);
+
+        return list.stream().map(authorResponse -> new AuthorResponseDTO(authorResponse.getId()
+                , authorResponse.getName()
+                , authorResponse.getDateBirth()
+                , authorResponse.getNationality()
+        )).collect(Collectors.toList());
+
     }
 
     public void replace(String id, AuthorDTO authorDTO){
