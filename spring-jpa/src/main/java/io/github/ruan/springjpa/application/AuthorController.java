@@ -5,6 +5,7 @@ import io.github.ruan.springjpa.application.dto.AuthorResponseDTO;
 import io.github.ruan.springjpa.application.dto.ResponseError;
 import io.github.ruan.springjpa.exception.RegisterDuplicateException;
 import io.github.ruan.springjpa.service.AuthorService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ public class AuthorController {
 
 
     @PostMapping
-    public ResponseEntity<Object> save(@RequestBody AuthorDTO authorDTO){
+    public ResponseEntity<Object> save(@RequestBody @Valid AuthorDTO authorDTO){
         try{
             UUID uuid = authorServive.save(authorDTO);
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
