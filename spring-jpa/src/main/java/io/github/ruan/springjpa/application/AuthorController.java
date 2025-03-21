@@ -1,8 +1,8 @@
 package io.github.ruan.springjpa.application;
 
-import io.github.ruan.springjpa.application.dto.AuthorDTO;
-import io.github.ruan.springjpa.application.dto.AuthorResponseDTO;
-import io.github.ruan.springjpa.application.dto.ResponseError;
+import io.github.ruan.springjpa.dto.AuthorDTO;
+import io.github.ruan.springjpa.dto.AuthorResponseDTO;
+import io.github.ruan.springjpa.dto.ResponseError;
 import io.github.ruan.springjpa.exception.RegisterDuplicateException;
 import io.github.ruan.springjpa.service.AuthorService;
 import jakarta.validation.Valid;

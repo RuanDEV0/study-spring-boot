@@ -1,8 +1,7 @@
 package io.github.ruan.springjpa.service;
 
-import io.github.ruan.springjpa.application.dto.AuthorDTO;
-import io.github.ruan.springjpa.application.dto.AuthorResponseDTO;
-import io.github.ruan.springjpa.exception.RegisterDuplicateException;
+import io.github.ruan.springjpa.dto.AuthorDTO;
+import io.github.ruan.springjpa.dto.AuthorResponseDTO;
 import io.github.ruan.springjpa.model.entitys.Author;
 import io.github.ruan.springjpa.repository.AuthorRepository;
 import io.github.ruan.springjpa.repository.BookRepository;

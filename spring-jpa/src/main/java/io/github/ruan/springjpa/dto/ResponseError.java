@@ -1,4 +1,4 @@
-package io.github.ruan.springjpa.application.dto;
+package io.github.ruan.springjpa.dto;
 
 import org.springframework.http.HttpStatus;
 
