@@ -41,7 +41,7 @@ public class AuthorController {
 
     @PutMapping("{id}")
     public ResponseEntity<Object> replace(@PathVariable String id,
-                                               @RequestBody AuthorDTO authorDTO){
+                                               @RequestBody @Valid AuthorDTO authorDTO){
         try{
             authorServive.replace(id, authorDTO);
             return ResponseEntity.noContent().build();
