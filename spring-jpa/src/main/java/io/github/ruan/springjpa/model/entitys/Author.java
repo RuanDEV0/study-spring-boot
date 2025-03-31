@@ -39,6 +39,4 @@ public class Author {
 
     @LastModifiedDate
     private LocalDateTime updateTime;
-
-    private UUID user;
 }

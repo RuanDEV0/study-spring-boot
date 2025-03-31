@@ -42,6 +42,4 @@ public class Book {
 
     @LastModifiedDate
     private LocalDateTime updateTime;
-
-    private UUID user;
 }
