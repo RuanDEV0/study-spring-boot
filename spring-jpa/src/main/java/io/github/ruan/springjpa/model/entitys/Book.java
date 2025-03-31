@@ -3,14 +3,19 @@ package io.github.ruan.springjpa.model.entitys;
 import io.github.ruan.springjpa.model.enums.Gender;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
 @Table(name = "tb_book")
 @Data
+@EntityListeners(AuditingEntityListener.class)
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -31,4 +36,12 @@ public class Book {
     )
     @JoinColumn(name = "id_author")
     private Author author;
+
+    @CreatedDate
+    private LocalDateTime createTime;
+
+    @LastModifiedDate
+    private LocalDateTime updateTime;
+
+    private UUID user;
 }
